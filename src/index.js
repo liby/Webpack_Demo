@@ -8,14 +8,15 @@ import printMe from "./print.js";
 function component() {
   const element = document.createElement("div");
   const btn = document.createElement("button");
-  const cssSpan = document.createElement("span");
-  const scssSpan = document.createElement("span");
+  const cssDiv = document.createElement("div");
+  const scssDiv = document.createElement("div");
+
   const myIcon = new Image();
 
-  cssSpan.innerHTML = _.join(["Hello", "webpack"], " ");
-  cssSpan.classList.add("hello-webpack");
-  scssSpan.innerHTML = _.join(["Hello", "sass"], " ");
-  scssSpan.classList.add("hello-sass");
+  cssDiv.innerHTML = _.join(["Hello", "webpack"], " ");
+  cssDiv.classList.add("hello-webpack");
+  scssDiv.innerHTML = _.join(["Hello", "sass"], " ");
+  scssDiv.classList.add("hello-sass");
 
   myIcon.src = Icon;
 
@@ -23,8 +24,8 @@ function component() {
   btn.onclick = printMe;
 
   element.appendChild(btn);
-  element.appendChild(cssSpan);
-  element.appendChild(scssSpan);
+  element.appendChild(cssDiv);
+  element.appendChild(scssDiv);
   element.appendChild(myIcon);
 
   return element;
