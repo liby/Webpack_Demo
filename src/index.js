@@ -3,22 +3,31 @@ import _ from "lodash";
 import "./styles/style.css";
 import "./styles/style.scss";
 import Icon from "./assets/images/icon.jpeg";
+import printMe from "./print.js";
 
-function component({ name, className }) {
+function component() {
   const element = document.createElement("div");
-
-  element.innerHTML = _.join(["Hello", name], " ");
-  element.classList.add(className);
-
+  const btn = document.createElement("button");
+  const cssSpan = document.createElement("span");
+  const scssSpan = document.createElement("span");
   const myIcon = new Image();
+
+  cssSpan.innerHTML = _.join(["Hello", "webpack"], " ");
+  cssSpan.classList.add("hello-webpack");
+  scssSpan.innerHTML = _.join(["Hello", "sass"], " ");
+  scssSpan.classList.add("hello-sass");
+
   myIcon.src = Icon;
 
+  btn.innerHTML = "Click me and check the console!";
+  btn.onclick = printMe;
+
+  element.appendChild(btn);
+  element.appendChild(cssSpan);
+  element.appendChild(scssSpan);
   element.appendChild(myIcon);
 
   return element;
 }
 
-document.body.appendChild(
-  component({ name: "webpack", className: "hello-webpack" })
-);
-document.body.appendChild(component({ name: "sass", className: "hello-sass" }));
+document.body.appendChild(component());
