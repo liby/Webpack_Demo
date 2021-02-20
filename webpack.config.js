@@ -3,13 +3,20 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
+  mode: "development",
+
   entry: "./src/index.js",
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist")
   },
 
-  plugins: [new CleanWebpackPlugin(), new HtmlWebpackPlugin()],
+  devtool: "inline-source-map",
+
+  plugins: [
+    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+    new HtmlWebpackPlugin()
+  ],
 
   module: {
     rules: [
@@ -38,5 +45,9 @@ module.exports = {
         type: "asset/resource"
       }
     ]
+  },
+
+  devServer: {
+    contentBase: "./dist"
   }
 };
